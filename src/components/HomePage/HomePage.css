@@ -1,0 +1,83 @@
+.croge-homepage{
+    background:  #4A53C5  url("../../assests/cross.png")  center no-repeat;
+    /* height: 100vh; */
+    padding: 15px;
+}
+.croge_text{
+    font-family: "poppins";
+  color: white;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   align-items: center;
+   width: 60%;
+   margin: auto;
+   padding-top: 20px;
+}
+.croge_text p{
+    font-size: 30px;
+    font-weight: 300;
+    margin-right: 5px;
+}
+
+.lil-floki{
+    background-image: url("../../assests/image\ 4.png");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    background-clip: content-box;
+    width: 35%;
+    /* border: 1px solid green; */
+    color: white;
+    font-size: 90px;
+    font-family: "Poppins";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.croge-card-holder{
+    /* border: 1px solid red; */
+
+    height: 50vh;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 200px;
+}
+
+.lil-floki-one{
+    background-image: url("../../assests/Group\ 9.png");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    background-clip: content-box;
+    width: 30%;
+    /* border: 1px solid green; */
+    color: white;
+    font-size: 100px;
+    font-family: "Poppins";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.link-div{
+    width: 75%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Poppins";
+    
+}
+.link-div a{
+    text-decoration: none;
+    color: #ffff;
+     
+}
+.cat{
+    transform: translateX(40px);
+}

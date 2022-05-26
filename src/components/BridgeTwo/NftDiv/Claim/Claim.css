@@ -1,0 +1,43 @@
+.Claim{
+    color: #ffff;
+    font-family: "Poppins";
+}
+.Claim p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.input_div{
+    width: 60%;
+    height: 44px;
+    background: #75CAE2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+.input_div input{
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+#claim-btn{
+    background: transparent;
+    background: #75CAE2;
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: bold;
+    font-family: "Poppins";
+}
+.claim-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+.claim-button-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

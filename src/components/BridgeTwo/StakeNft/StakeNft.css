@@ -1,0 +1,48 @@
+.staking-div{
+    /* height: 130vh; */
+    background: #4D80D0;
+    position: relative;
+    padding-bottom: 200px;
+}
+.bg-one{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.bg-two{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+.stars-one{
+    position: absolute;
+    right: 40px;
+    top: 10px;
+}
+.stars-two{
+    position: absolute;
+    right: 10px;
+    top: 180px;
+}
+.footer-img{
+    position: absolute;
+    bottom: 0;
+    z-index: 8;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+}
+.staking-text{
+    text-align: center;
+    font-family: "Poppins";
+    color: white;
+}
+.staking-text h1{
+    font-weight: 300;
+    font-size: 45px;
+    padding-top: 40px;
+}
+.staking-text p{
+    padding-bottom: 40px;
+}
