@@ -10,11 +10,11 @@ function App() {
     <div className="App">
           <BrowserRouter>
          <Routes>
-           <Route exact to="/" element={<BridgeOne/>} />
-           <Route exact to="/bridgetwo" element={<BridgeTwo/>} />
-           <Route exact to="/homepage" element={<HomePage/>} />
-           <Route exact to="/lightmode" element={<LightMode/>} />
-           <Route exact to="/darkmode" element={<DarkMode/>} />
+           <Route exact path="/" element={<BridgeOne/>} />
+           <Route exact path="/bridgetwo" element={<BridgeTwo/>} />
+           <Route exact path="/homepage" element={<HomePage/>} />
+           <Route exact path="/lightmode" element={<LightMode/>} />
+           <Route exact path="/darkmode" element={<DarkMode/>} />
          </Routes>
          </BrowserRouter>
 
