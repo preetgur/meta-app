@@ -4,6 +4,7 @@ import BridgeTwo from './components/BridgeTwo/BridgeTwo';
 import LightMode from './components/CrogeNFTs/LightMode/LightMode';
 import HomePage from './components/HomePage/HomePage';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
+import DarkMode from './components/CrogeNFTs/DarkMode/DarkMode';
 function App() {
   return (
     <div className="App">
