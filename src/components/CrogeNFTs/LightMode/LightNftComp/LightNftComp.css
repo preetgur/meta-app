@@ -15,6 +15,19 @@
     bottom: 0;
     right: 0;
 }
+.toggler{
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    z-index: 99;
+}
+.layout-div{
+    position: relative;
+}
+.ant-switch-checked{
+    border: none !important;
+    outline: none !important;
+}
 .nft_crogs{
     z-index: 5;
     position: absolute;
@@ -246,6 +259,9 @@
     }
     .mint-inputs{
         padding-bottom: 16px;
+    }
+    .toggler{
+        top: 140px;
     }
 }
 @media(min-width:769px) and (max-width:1024px){

@@ -5,8 +5,19 @@ import BgTwo from '../../../../assests/b.png';
 import Stars from '../../../../assests/stars.png';
 import Dots from '../../../../assests/dots.png';
 import NftCrog from "../../../../assests/nftcrog.png";
-import { Progress } from 'antd';
+import {useNavigate} from 'react-router-dom';
+import { Progress,Switch } from 'antd';
 const LightNftComp = ({color,background}) => {
+const [isDark,setIsDark] =useState(true);
+    const navigate = useNavigate();
+
+    const onChange = (checked) => {
+        console.log(`switch to ${checked}`);
+        console.log("state",isDark)
+        setIsDark(isDark=>!isDark)
+       
+      };
+
     const [countVal,setCountVal] = useState(0);
     
     const handleIncrement =()=>{
@@ -40,6 +51,7 @@ const LightNftComp = ({color,background}) => {
         <div className='nft_crogs'>
          <img src={NftCrog} />
         </div>
+       
        <div className='mint-div' style={{background:`${background}`}}>
            <div className='mint_price'>
                <div className='minted-loader'>
@@ -49,6 +61,7 @@ const LightNftComp = ({color,background}) => {
                    <h1>Mint NFT</h1>
                    <p>Mint Price 0.1 Eth</p>
                </div>
+              
            </div>
            <div className='minted__text'>
 <p>830/1000</p>
