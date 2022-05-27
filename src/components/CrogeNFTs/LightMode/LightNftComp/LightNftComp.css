@@ -1,0 +1,276 @@
+.nft__light{
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 200px;    
+    overflow: hidden;
+}
+.bg__top{
+    position: absolute;
+    top: -38px;
+    left: 0;
+    z-index: 5 !important;
+}
+.bg__bottom{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.nft_crogs{
+    z-index: 5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.mint-div{
+    width: 40%;
+    margin:  auto;
+    border: 12px solid #75CAE2;
+    border-radius: 40px;
+    padding: 20px;
+}
+.mint-header {
+    color: #fff;
+    font-family: "Poppins";
+    text-align: center;
+    /* padding-top: 50px; */
+    margin-left: 50px;
+}
+.mint-header h1{
+    font-weight: 400;
+    font-size: 42px;
+    color: #ffff;
+}
+.mint-header p{
+    font-size: 18px;
+    color: #ECFFFE;
+}
+.minted-loader{
+    text-align: center;
+    color: #ffff;
+    font-family: "Poppins";
+}
+.minted-loader div p{
+    font-size: 15px;
+    padding-top: 20px;
+}
+.ant-progress-text{
+    color: #ffff !important;
+}
+.minted__text{
+    color: #ffff;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 15px;
+    text-align: start;
+    margin-top: 30px;
+}
+
+.mint_price{
+    display: flex;
+    align-items: center;
+}
+.amount-mint_div{
+    background: #000000;
+    border: 1px solid #74C5E1;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width:200px;
+    margin: auto;
+    padding: 8px;
+    color: #ffff;
+    margin-bottom: 10px;
+}
+.amount-mint_div button{
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+.mint-inputs{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     padding-bottom: 100px;
+}
+.amount-mint_div p{
+    transform: translateY(7px)
+}
+.amount-btn-div button{
+    background: black;
+    color: #74C5E1;
+    border-radius: 12px;
+    font-family: "Poppins";
+    padding: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.amount_handler-div{
+    width: 250px;
+    text-align: center;
+    margin-bottom: 30px;
+    transform: translateX(5px);
+}
+.amount_handler-div span{
+    color: #ffff;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-weight: 400;
+}
+.max-amount_div input{
+    background: #000000;
+    border: 1px solid #74C5E1;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 200px;
+    margin: auto;
+    height: 55px;
+    padding: 8px;
+    color: #ffff;
+    /* margin-bottom: 10px; */
+}
+.max-amount_div label{
+    font-family: "Poppins";
+    color:#ffff;
+    font-size: 20px;
+}
+.max-amount_div{
+    width: 40%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.mint__button-div{
+    width: 35%;
+    text-align: center;
+}
+.mint__button-div button {
+    width: 80%;
+    background: transparent;
+    border: 3px solid #74C5E1;
+    border-radius: 20px;
+    color: #74C5E1;
+    padding: 8px;
+    font-size: 18px;
+    font-family: "Poppins";
+    cursor: pointer;
+}
+.max-plus_div{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 300px;
+}
+.dots__one{
+    position: absolute;
+    top: 60px;
+    left: 240px;
+}
+.dots__two{
+    position: absolute;
+    right: 250px;
+    top: 5px;
+}
+.star__one{
+    position: absolute;
+    left: 90px;
+    top: 380px;
+}
+.star__two{
+    position: absolute;
+    right: 50px;
+    top: 200px;
+}
+
+@media(min-width:320px) and (max-width:768px){
+
+    .bg__top img{
+        width: 50px;
+    height: 60px;
+}
+    .bg__top{
+        top: 0;
+    }
+    .dots__two,.dots__one,.star__one,.star__two{
+       display: none;
+        left: 21px;
+        top: 35px;
+    }
+    .dots__two img{
+        width: 48px;
+    height: 32px;
+    }
+    
+    .mint-div{
+        width: 81%;
+        border: 4px solid #75CAE2;
+    }
+    .mint_price{
+        flex-direction: column-reverse;
+    }
+    .mint-header{
+        margin-left: 0px;
+    }
+    .minted__text{
+        text-align: center;
+    }
+    .max-plus_div{
+        flex-direction: column;
+        width: inherit;
+    }
+    .max-amount_div{
+        width: inherit;
+    }
+    .max-amount_div input{
+        margin-bottom: 10px;
+    }
+    .mint__button-div{
+        width: 95%;
+    }
+    .nft_crogs img{
+        width: 80%;
+    }
+    .bg__bottom img{
+        width: 50px;
+        height: 60px;
+    }
+    .nft__light{
+        padding-bottom:89px ;
+    }
+    .mint-inputs{
+        padding-bottom: 16px;
+    }
+}
+@media(min-width:769px) and (max-width:1024px){
+  .nft_crogs img{
+      width: 80%;
+  }
+  .bg__top img ,.bg__bottom img,.star__one img,.star__two img,.dots__one img,.dots__two img{
+      width: 150px;
+  }
+  .star__one{
+      left: 5px;
+  }
+  .star__two{
+      right: 5px;
+  }
+  .dots__two{
+      right: 107px;
+      top: 35px;
+      display: none;
+
+  }
+  .dots__one{
+      display: none;
+  }
+  .mint-div{
+      width: 65%;
+  }
+}

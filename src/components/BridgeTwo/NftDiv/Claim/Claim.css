@@ -41,3 +41,23 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@media (min-width:360px) and (max-width:768px){
+    .claim-button-div{
+        flex-direction: column;
+    }
+    .claim-input{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px){
+    .claim-button-div{
+        flex-direction: column;
+    }
+    .claim-input{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}

@@ -7,3 +7,13 @@
     font-size: 18px;
     margin-right: 15px;
 }
+ @media (min-width:360px) and (max-width:768px){
+     .btn-staking {
+         text-align: center;
+     }
+     .btn-staking button {
+         width: 70%;
+         margin-top: 10px;
+     }
+     
+ }

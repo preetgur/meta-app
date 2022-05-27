@@ -1,6 +1,5 @@
 .croge-homepage{
     background:  #4A53C5  url("../../assests/cross.png")  center no-repeat;
-    /* height: 100vh; */
     padding: 15px;
 }
 .croge_text{
@@ -80,4 +79,23 @@
 }
 .cat{
     transform: translateX(40px);
+}
+
+@media(min-width:360px) and (max-width:768px){
+    .croge_text{
+        width: 100%;
+    }
+    .croge_text p{
+        font-size: 23px;
+    }
+    .croge-card-holder{
+        flex-direction: column;
+        width: 100%;
+    }
+    .lil-floki{
+        border: 1px solid ;
+        height: 100%;
+        width: 80%;
+    }
+    
 }

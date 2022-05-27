@@ -14,7 +14,9 @@ const HomePage = () => {
        </div>
        <div className='croge-card-holder'>
         <div className='lil-floki'>
+            <p>
             LIL FLOKI
+            </p>
         </div>
         <div className='crossing-div'>
             <img src={Cross}/>

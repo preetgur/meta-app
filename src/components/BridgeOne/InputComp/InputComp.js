@@ -21,7 +21,7 @@ const InputComp = (props) => {
                     <p id="title_para">{props?.data?.para}</p>
                 </div>
                </div>
-                <div>
+                <div className='maxx-div'>
                     <p>{props?.data?.max ? props?.data?.max :''}</p>
                 </div>
             </div>

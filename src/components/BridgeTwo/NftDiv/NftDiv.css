@@ -6,3 +6,9 @@
     padding: 20px;
     background: #1B58AC;
 }
+@media (min-width:360px) and (max-width:768px){
+    .nft-wrapper{
+        width: 90%;
+    }
+    
+}

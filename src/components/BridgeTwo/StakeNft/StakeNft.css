@@ -46,3 +46,36 @@
 .staking-text p{
     padding-bottom: 40px;
 }
+
+@media (min-width:360px) and (max-width:768px){
+    .bg-one img , .bg-two img{
+        width: 115px;
+    }
+    .stars-one img, .stars-two img{
+        width: 80px;
+    }
+    .footer-img img{
+        width: 80%;
+    }
+    .staking-div{
+        padding-bottom: 80px;
+        padding-top: 30px;
+    }
+    .stars-one{
+        right: 12px;
+    }
+    .stars-two{
+        display: none;
+    }
+    
+    
+}
+
+@media (min-width:769px) and (max-width:1024px){
+    .stars-one img{
+        width: 150px;
+    }
+    .stars-two{
+        display: none;
+    }
+}

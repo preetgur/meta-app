@@ -42,3 +42,33 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
+
+@media(min-width:320px) and (max-width:768px){
+
+    .footer-wrapper{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .footer-icons{
+        width: 75%;
+    }
+    .footer-details div p{
+        margin-bottom: 0px;
+    }
+    .footer-details{
+        width: 66%;
+    }
+}
+
+@media(min-width:769px) and (max-width:1024px){
+
+    .footer-icons{
+        width: 45%;
+    }
+    .footer-details{
+      width: 30%;
+    }
+    .footer-details div p{
+        margin-bottom: 0px;
+    }
+}

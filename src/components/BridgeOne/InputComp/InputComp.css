@@ -58,3 +58,12 @@
     font-weight: bolder;
     font-family: poppins,sans-serif;
 }
+
+@media(min-width:320px) and (max-width:768px){
+.maxx-div{
+    margin-left: 10px;
+}
+.value_div{
+    width: 23%;
+}
+}
