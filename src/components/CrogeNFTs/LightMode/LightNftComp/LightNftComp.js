@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import "./LightNftComp.css";
 import BgOne from '../../../../assests/a.png';
 import BgTwo from '../../../../assests/b.png';
@@ -7,6 +7,16 @@ import Dots from '../../../../assests/dots.png';
 import NftCrog from "../../../../assests/nftcrog.png";
 import { Progress } from 'antd';
 const LightNftComp = ({color,background}) => {
+    const [countVal,setCountVal] = useState(0);
+    
+    const handleIncrement =()=>{
+        setCountVal(prevData=> prevData+1)
+    }
+
+    const handleDecrement =()=>{
+        setCountVal(prevData=> prevData-1)
+    }
+    
   return (
     <div className='nft__light' style={{background:`${color}`}} >
        <div className='bg__top'>
@@ -48,9 +58,9 @@ const LightNftComp = ({color,background}) => {
                   <div className='amount_handler-div'>
                  <div className='max-plus_div'>
                  <div className='amount-mint_div'>
-                        <button >-</button>
-                        <p>2</p>
-                        <button style={{color:"#74C5E1"}}>+</button>
+                        <button onClick={handleDecrement} >-</button>
+                        <p>{countVal}</p>
+                        <button onClick={handleIncrement} style={{color:"#74C5E1"}}>+</button>
                    </div>
                    <div className='amount-btn-div'>
                        <button>MAX</button>

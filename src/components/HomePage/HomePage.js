@@ -6,11 +6,8 @@ const HomePage = () => {
   return (
     <div className='croge-homepage'>
        <div className='croge_text'>
-           <p>Lil Floki will be onboarded to 
-</p>
-           <div>
-               <img src={Crossing}/>
-           </div>
+           <p>Lil Floki will be onboarded to </p>
+           <div><img src={Crossing}/></div>
        </div>
        <div className='croge-card-holder'>
         <div className='lil-floki'>
@@ -21,7 +18,12 @@ const HomePage = () => {
         <div className='crossing-div'>
             <img src={Cross}/>
         </div>
-        <div className='lil-floki-one'>catoshi</div>
+        <div className='lil-floki-one'>
+           <p>
+            catoshi
+
+           </p>
+            </div>
        </div>
        <div className='link-div'>
            <div>
