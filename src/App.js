@@ -11,7 +11,8 @@ function App() {
     <div className="App">
           <BrowserRouter>
          <Routes>
-           <Route exact path="/" element={<BridgeOne/>} />
+           <Route exact path="/" element={<Layout/>} />
+           <Route exact path="/bridgeOne" element={<BridgeOne/>} />
            <Route exact path="/bridgetwo" element={<BridgeTwo/>} />
            <Route exact path="/homepage" element={<HomePage/>} />
            <Route exact path="/lightmode" element={<Layout/>} />

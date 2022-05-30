@@ -1,0 +1,42 @@
+{
+  "3": {
+    "chainBalance": "/balanceOf_ETH",
+    "vaultBalance": "/ETHVaultBalance",
+    "bridgeBalance": "/getETHBridgeFees",
+    "convertValue": "/getETHAmountAfterFee",
+    "allowance": "/checkETHAllowance",
+    "postTransaction": "/getETHTransactionResponse"
+  },
+  "97": {
+    "chainBalance": "/balanceOf_BSC",
+    "vaultBalance": "/BSCVaultBalance",
+    "bridgeBalance": "/getBSCBridgeFees",
+    "convertValue": "/getBSCAmountAfterFee",
+    "allowance": "/checkBSCAllowance",
+    "postTransaction": "/getBSCTransactionResponse"
+  },
+  "4002": {
+    "chainBalance": "/balanceOf_AVAX",
+    "vaultBalance": "/AVAXVaultBalance",
+    "bridgeBalance": "/getAVAXBridgeFees",
+    "convertValue": "/getAVAXAmountAfterFee",
+    "allowance": "/checkAVAXAllowance",
+    "postTransaction": "/getAVAXTransactionResponse"
+  },
+  "43113": {
+    "chainBalance": "/balanceOf_FTM",
+    "vaultBalance": "/FTMVaultBalance",
+    "bridgeBalance": "/getFTMBridgeFees",
+    "convertValue": "/getFTMAmountAfterFee",
+    "allowance": "/checkFTMAllowance",
+    "postTransaction": "/getFTMTransactionResponse"
+  },
+  "80001": {
+    "chainBalance": "/balanceOf_MAT",
+    "vaultBalance": "/MATVaultBalance",
+    "bridgeBalance": "/getMATBridgeFees",
+    "convertValue": "/getMATAmountAfterFee",
+    "allowance": "/checkMATAllowance",
+    "postTransaction": "/getMATTransactionResponse"
+  }
+}

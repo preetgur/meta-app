@@ -7,15 +7,13 @@ const Layout = () => {
     const [isDark,setIsDark] =React.useState(true);
 
     const onChange = () => {
-        console.log(`switch to `);
-        console.log("state",isDark)
         setIsDark(isDark=>!isDark)
        
       };
   return (
     <div className='layout-div'>
            <div className='toggler'>
-        <Switch defaultChecked onChange={onChange} />
+        <Switch  onChange={onChange} />
         </div>
         {/* <button onClick={onChange}>Toogle</button> */}
         {
