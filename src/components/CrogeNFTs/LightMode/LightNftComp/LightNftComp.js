@@ -59,6 +59,7 @@ const LightNftComp = ({ color, background }) => {
     }
 
     const handleDecrement = () => {
+        if(countVal <= 1) return;
         setCountVal(prevData => prevData - 1)
     }
 
@@ -120,7 +121,7 @@ const LightNftComp = ({ color, background }) => {
 
                 </div>
                 <div className='minted__text'>
-                    <p>{tSupply}/{mSupply} MINTED</p>
+                    <p>{tSupply}/{mSupply}</p>
                     <p style={{ lineHeight: "0" }}> MINTED</p>
                 </div>
                 <div className='mint-inputs'>

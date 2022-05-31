@@ -35,5 +35,12 @@
     "nativeCurrency": {"name": "MATIC", "symbol": "MATIC", "decimals": 18},
     "rpcUrls": ["https://rpc-mumbai.maticvigil.com/"],
     "blockExplorerUrls": ["https://mumbai.polygonscan.com/"]
+  },
+  "4": {
+    "chainId": "0x4",
+    "chainName": "ETH",
+    "nativeCurrency": {"name": "ETH", "symbol": "ETH", "decimals": 18},
+    "rpcUrls": ["https://rinkeby.infura.io/v3/"],
+    "blockExplorerUrls": ["https://rinkeby.etherscan.io/"]
   }
 }

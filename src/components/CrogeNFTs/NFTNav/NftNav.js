@@ -16,7 +16,7 @@ const NftNav = ({color}) => {
             <img  src={logoNFT} />
         </div>
         <div className='nav-btn'>
-        { !userAddress ? <button onClick={() => dispatch(connectToWallet())}>Connect Wallet   </button> : <button>Connected {userAddress.substring(0,5)} </button> }
+        { !userAddress ? <button onClick={() => dispatch(connectToWallet())}>Connect Wallet   </button> : <button>Connected {userAddress.substring(0,5)} ...{userAddress.substr(userAddress.length - 5)} </button> }
         </div>
       </div>
     </div>

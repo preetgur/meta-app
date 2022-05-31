@@ -72,7 +72,11 @@ export const connectToWallet = createAsyncThunk('wallet', async () => {
     const signer = provider.getSigner()
     const accounts = await provider.listAccounts()
     const {chainId} = await provider.getNetwork()
-    // localStorage.setItem("userAddress", accounts[0]);
+    console.log("chainIdchainIdchainIdchainId", chainId)
+    if(chainId !== 4) {
+     await addNewNetwork(4);
+     window.location.reload();
+    }
     return {
       web3Modal,
       provider,
