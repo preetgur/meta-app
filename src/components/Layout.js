@@ -8,14 +8,14 @@ import ToggleTheme from "react-toggle-theme";
  
 const Layout = () => {
     const [isDark,setIsDark] =React.useState(true);
-    const [currentTheme, setCurrentTheme] = React.useState("light");
+    const [currentTheme, setCurrentTheme] = React.useState();
     const onChange = () => {
         setIsDark(isDark=>!isDark)
         if(isDark === true){
-          setCurrentTheme("light")
+          setCurrentTheme("dark")
         }
         else{
-          setCurrentTheme("dark")
+          setCurrentTheme("light")
         }
        
       };
