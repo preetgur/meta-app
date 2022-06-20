@@ -42,5 +42,12 @@
     "nativeCurrency": {"name": "ETH", "symbol": "ETH", "decimals": 18},
     "rpcUrls": ["https://rinkeby.infura.io/v3/"],
     "blockExplorerUrls": ["https://rinkeby.etherscan.io/"]
+  },
+  "25": {
+    "chainId": "0x19",
+    "chainName": "CRO",
+    "nativeCurrency": {"name": "CRO", "symbol": "CRO", "decimals": 18},
+    "rpcUrls": ["https://cronosrpc-1.xstaking.sg"],
+    "blockExplorerUrls": ["https://cronoscan.com"]
   }
 }

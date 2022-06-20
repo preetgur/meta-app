@@ -4,22 +4,22 @@ import keccak256 from 'keccak256';
 import { mintAddress, mintABI } from "../SC/mint";
 import whitelist from "./whitelistAddresses.json";
 
-export const rinkebyProviderURL = "https://rinkeby.infura.io/v3/916696a1cc3743429508f70424840709";
+export const rinkebyProviderURL = "https://cronosrpc-1.xstaking.sg";
 
 // provider
 // let provider = new ethers.providers.JsonRpcProvider(rinkebyProviderURL);
 
 export const mint = async (providerMint, userAddress, amount) => {
     if (!userAddress) return "Connect wallet first.";
-  
+
     try {
 
         const leaves = whitelist.map(x => keccak256(x))
         const tree = new MerkleTree(leaves, keccak256, { sortPairs: true })
         const leaf = keccak256(userAddress).toString('hex')
         const proof = tree.getProof(leaf).map(x => "0x" + x.data.toString('hex'))
-       
-        if(proof.length === 0){ 
+
+        if (proof.length === 0) {
             throw new Error("You are not whitelisted");
         }
         const mintContract = new ethers.Contract(
@@ -32,11 +32,11 @@ export const mint = async (providerMint, userAddress, amount) => {
         const mintcost = await mintContract.whitelistmintCost();
         const totalCost = amount * mintcost;
         const transaction = { value: totalCost.toString() };
-        await mintContractSigner.whitelistMint(amount,proof, transaction);
+        await mintContractSigner.whitelistMint(amount, proof, transaction);
         return "Transaction successful."
     } catch (err) {
-        if(err.message.includes("whitelisted")){
-           return "you are not whitelisted";
+        if (err.message.includes("whitelisted")) {
+            return "you are not whitelisted";
         }
         return err.message;
     }
@@ -69,6 +69,12 @@ export const mintPriceCal = async () => {
         mintABI,
         provider
     );
+
+    const checkHrs = BigNumber.from(await mintContract.checkTime()).toNumber();
+    if (checkHrs > 86400) {
+        const mintcost = await mintContract.whitelistmintCostAfter24hrs();
+        return ethers.utils.formatEther(mintcost);
+    }
 
     const mintcost = await mintContract.whitelistmintCost();
     return ethers.utils.formatEther(mintcost);
