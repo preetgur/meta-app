@@ -205,16 +205,18 @@ export const swapTOKENS = createAsyncThunk(
 )
 
 export const disconnectWallet = async (web3Modal, provider) => {
+  console.log("provider ##########",provider)
   if (provider.close) {
     await provider.close()
     await web3Modal.clearCachedProvider()
   }
   await web3Modal.clearCachedProvider()
+  localStorage.removeItem('userAddress')
   window.location.reload()
 }
 
 const initialState = {
-  provider: null,
+  provider: localStorage.getItem("provider") ? JSON.parse(localStorage.getItem("provider")) :null,
   userAddress: localStorage.getItem("userAddress") ? localStorage.getItem("userAddress") : '',
   chainId: 0,
   web3Modal: null,
@@ -261,12 +263,16 @@ const rootSlice = createSlice({
       state.userAddress = payload?.userAddress
       state.chainId = payload?.chainId
       state.web3Modal = payload?.web3Modal
+      localStorage.setItem('userAddress',payload?.userAddress)
+      // localStorage.setItem('provider',JSON.parse(payload?.web3Modal?.cacheProvider))
+
       toast.success('Wallet Connected')
     },
     [connectToWallet.rejected]: (state, {error}) => {
       if (error.code === 4001) {
         // console.log('Please connect to MetaMask.')
         toast.error('Please connect to MetaMask.')
+
       } else {
         console.error(error)
       }
@@ -303,3 +309,4 @@ export const {
   updateSecondChainBalances,
   clearHashValue,
 } = rootSlice.actions
+ 

@@ -29,6 +29,15 @@
     margin-left: 10px;
 }
 
+.nav-btn-logout{
+    align-items: center;
+    font-size: 18px !important;
+
+}
+.nav-btn{
+    display: flex;
+    gap:10px;
+}
 @media(min-width:360px) and (max-width:768px){
  .nav-div{
      width: 100%;
