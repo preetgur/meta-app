@@ -29,7 +29,13 @@ export const mint = async (providerMint, userAddress, amount) => {
         );
         const signer = providerMint.getSigner();
         const mintContractSigner = mintContract.connect(signer);
-        const mintcost = await mintContract.whitelistmintCost();
+
+
+        let mintcost = await mintContract.whitelistmintCost();
+        const checkHrs = BigNumber.from(await mintContract.checkTime()).toNumber();
+        if (checkHrs > 86400) {
+            mintcost = await mintContract.whitelistmintCostAfter24hrs();
+        }
         const totalCost = amount * mintcost;
         const transaction = { value: totalCost.toString() };
         await mintContractSigner.whitelistMint(amount, proof, transaction);
