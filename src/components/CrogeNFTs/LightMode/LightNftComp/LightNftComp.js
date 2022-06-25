@@ -8,7 +8,7 @@ import NftCrog from "../../../../assests/nftcrog.png";
 import { useNavigate } from 'react-router-dom';
 import { Progress, Switch } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
-import { mint, mintBalance, mintPriceCal, totalSupply, maxSupply } from "../../../utils/functions";
+import { mint, mintBalance, mintPriceCal, totalSupply, maxSupply, whitelistMint, mintPriceWithoutWhitelist} from "../../../utils/functions";
 import { notification } from 'antd';
 
 const LightNftComp = ({ color, background }) => {
@@ -33,7 +33,12 @@ const LightNftComp = ({ color, background }) => {
                 const response = await mintBalance(provider, userAddress);
                 setBalance(response);
             }
-            const responseMintPrice = await mintPriceCal();
+            let responseMintPrice;
+            if(window.location.href.includes("whitelist-mint")){
+                responseMintPrice = await mintPriceCal();
+            }else{
+                responseMintPrice = await mintPriceWithoutWhitelist();
+            }
             setMintPrice(responseMintPrice);
             const responseTotalSupply = await totalSupply();
             setTSupply(parseInt(responseTotalSupply));
@@ -67,6 +72,12 @@ const LightNftComp = ({ color, background }) => {
         if(countVal > 10){
           notification.error({message: "Mint amount must be less than  or equal to 10."})
           return null;
+        }
+        if(window.location.href.includes("whitelist-mint")){
+            const response = await whitelistMint(provider, userAddress, countVal);
+            notification.info({ message: response });
+            setTxnStatus(true);
+            return;
         }
         const response = await mint(provider, userAddress, countVal);
         notification.info({ message: response });
@@ -116,7 +127,7 @@ const LightNftComp = ({ color, background }) => {
                     </div>
                     <div className='mint-header'>
                         <h1>Mint NFT</h1>
-                        <p>Mint Price{mintPrice} Eth</p>
+                        <p>Mint Price {mintPrice} Eth</p>
                     </div>
 
                 </div>
