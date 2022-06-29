@@ -270,6 +270,7 @@ const rootSlice = createSlice({
     },
     setTrxnHash(state,action){
       const{payload}  = action
+      console.log("!---- setTrn has func ---!",action)
       state.trxnHash = payload
     },
     clearTrxnHash(state){

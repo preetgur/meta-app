@@ -23,7 +23,7 @@ const LightNftComp = ({ color, background }) => {
     const [max, setMax] = useState(false);
     const [percentage, setPercentage] = useState(1);
     const [txnStatus, setTxnStatus ] = useState(false);
-    const [trxnHash,setTrxnHash] = useState('')
+    const [transactionHash,setTransactionHash] = useState('')
     const dispatch = useDispatch()
     const {
         userAddress,
@@ -81,13 +81,17 @@ const LightNftComp = ({ color, background }) => {
           return null;
         }
         if(window.location.href.includes("whitelist-mint")){
+            console.log("!---- whitelist-mint -----!")
             const response = await whitelistMint(provider, userAddress, countVal);
+            console.log("!---- whitelist-mint-resp -----!",response)
+
             notification.info({ message: response });
             setTxnStatus(true);
             return;
         }
         const response = await mint(provider, userAddress, countVal);
-        setTrxnHash(response?.hash)
+        console.log("!---- mint ---- response -----!",response)
+        setTransactionHash(response?.hash)
         dispatch(setTrxnHash(response?.hash)) //  dispatch store action
         notification.success({ message: "Transaction successful." });
         setTxnStatus(true);
@@ -179,7 +183,7 @@ const LightNftComp = ({ color, background }) => {
                 </div>
             </div>
             {/* Ant modal pop up */}
-          {trxnHash &&  <AntdModal hash={trxnHash}/>}
+           <AntdModal hash={transactionHash}/>
         </div>
     )
 }

@@ -17,13 +17,13 @@ const AntdModal = ({hash}) => {
     dispatch(clearTrxnHash())
   };
   
-  const link = `https://testnet.bscscan.com/tx/${hash}`
+  const link = `https://testnet.cronoscan.com/tx/${hash}`
 
   return (
     <>
       <Modal visible={isModalVisible} className="antModal" footer={null} bodyStyle={{background:"#201F3E"}} >
         <div className="popUpModal"> 
-        <button className='popUpModal__closebtn' onClick={()=>alert('close icons')}> <CloseCircleOutlined style={{fontSize:"20px"}} /> </button>
+        <span className='popUpModal__closebtn' onClick={()=>handleClose()}> <CloseCircleOutlined style={{fontSize:"20px"}} /> </span>
         <h2 className="popUpModal__heading"> <CheckCircleOutlined className='popUpModal__check' style={{fontSize:"20px"}}/> Transaction Successfull </h2>
          <img className="popUpModal__img" src={Logo} />
            

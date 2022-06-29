@@ -10,8 +10,8 @@ export const rinkebyProviderURL = "https://cronosrpc-1.xstaking.sg";
 // let provider = new ethers.providers.JsonRpcProvider(rinkebyProviderURL);
 
 export const mint = async (providerMint, userAddress, amount) => {
-    if (!userAddress) return "Connect wallet first.";
-
+    
+    if (!userAddress) throw "Connect wallet first.";
     try {
 
         const mintContract = new ethers.Contract(
@@ -25,19 +25,21 @@ export const mint = async (providerMint, userAddress, amount) => {
         let mintcost = await mintContract.mintCost();
         const totalCost = amount * mintcost;
         const transaction = { value: totalCost.toString() };
-        await mintContractSigner.mint(amount, transaction);
-        return "Transaction successful."
+        const resp = await mintContractSigner.mint(amount, transaction);
+        return resp
+        // return "Transaction successful."
+
     } catch (err) {
         if (err.message.includes("whitelisted")) {
-            return "you are not whitelisted";
+            throw "you are not whitelisted";
         }
-        return err.message;
+        throw err.message;
     }
 }
 
 
 export const whitelistMint = async (providerMint, userAddress, amount) => {
-    if (!userAddress) return "Connect wallet first.";
+    if (!userAddress) throw "Connect wallet first.";
     try {
 
         const leaves = whitelist.map(x => keccak256(x))
