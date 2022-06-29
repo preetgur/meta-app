@@ -49,7 +49,7 @@ export const providerOptions = {
     package: WalletLink, // Required
     options: {
       appName: 'Croge NFT', // Required
-      // infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
+      infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
       // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
       rpc:{
         25: "https://cronosrpc-1.xstaking.sg",
