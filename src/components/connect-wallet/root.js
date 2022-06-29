@@ -38,8 +38,8 @@ export const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      // bridge: 'https://bridge.walletconnect.org',
-      // infuraId: '14a0951f47e646c1b241aa533e150219',
+      bridge: 'https://bridge.walletconnect.org',
+      infuraId: '916696a1cc3743429508f70424840709',
       rpc:{
         25: "https://cronosrpc-1.xstaking.sg",
       }
