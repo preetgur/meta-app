@@ -12,6 +12,7 @@ function App() {
           <BrowserRouter>
          <Routes>
            <Route exact path="/" element={<Layout/>} />
+           <Route exact path="/whitelist-mint" element={<Layout/>} />
            <Route exact path="/bridgeOne" element={<BridgeOne/>} />
            <Route exact path="/bridgetwo" element={<BridgeTwo/>} />
            <Route exact path="/homepage" element={<HomePage/>} />

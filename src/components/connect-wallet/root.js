@@ -26,6 +26,7 @@ export const addNewNetwork = async (id) => {
     }
   }
 }
+
 export const providerOptions = {
   injected: {
     display: {
@@ -40,31 +41,29 @@ export const providerOptions = {
       // bridge: 'https://bridge.walletconnect.org',
       // infuraId: '14a0951f47e646c1b241aa533e150219',
       rpc:{
-        3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-        97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
+        25: "https://cronosrpc-1.xstaking.sg",
       }
     },
   },
   walletlink: {
     package: WalletLink, // Required
     options: {
-      appName: 'My Awesome App', // Required
-      infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
+      appName: 'Croge NFT', // Required
+      // infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
       // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
       rpc:{
-        3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-        97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
+        25: "https://cronosrpc-1.xstaking.sg",
       }
       // chainId: 1, // Optional. It defaults to 1 if not provided
       // darkMode: false, // Optional. Use dark theme, defaults to false
     },
   },
 }
-
 export const connectToWallet = createAsyncThunk('wallet', async () => {
     console.log("connecting wallet")
   try {
     
+
     const web3Modal = new Web3Modal({
       providerOptions,
       cacheProvider:true
@@ -222,7 +221,7 @@ export const disconnectWallet = createAsyncThunk('disconnect/wallet',async(_,thu
   window.location.reload()
 })
 const initialState = {
-  provider: null,
+  provider: localStorage.getItem("provider") ? JSON.parse(localStorage.getItem("provider")) :null,
   userAddress: localStorage.getItem("userAddress") ? localStorage.getItem("userAddress") : '',
   chainId: 0,
   web3Modal: null,
@@ -246,6 +245,13 @@ const rootSlice = createSlice({
   reducers: {
     updateToken(state, {payload}) {
       state.token = payload
+    },
+    setUserAddress(state,action){
+      const {payload} = action
+      state.userAddress = payload.account
+      state.web3Modal = payload.web3Modal
+      state.provider = payload.provider
+      state.chainId = payload.chainId
     },
     updateSecondChain(state, {payload}) {
       state.secondChain = payload
@@ -283,9 +289,16 @@ const rootSlice = createSlice({
       if (error.code === 4001) {
         // console.log('Please connect to MetaMask.')
         toast.error('Please connect to MetaMask.')
+
       } else {
         console.error(error)
       }
+    },
+    [disconnectWallet.fulfilled]:(state) =>{
+      state.userAddress = ''
+      state.provider = null
+      state.chainId = 0
+      state.web3Modal =null
     },
     [swapTOKENS.pending]: (state) => {
       state.swapLoading = true
@@ -319,5 +332,7 @@ export const {
   updateSecondChainBalances,
   clearHashValue,
   setTrxnHash,
-  clearTrxnHash
+  clearTrxnHash,
+  setUserAddress
 } = rootSlice.actions
+ 

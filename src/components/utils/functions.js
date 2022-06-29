@@ -14,6 +14,32 @@ export const mint = async (providerMint, userAddress, amount) => {
 
     try {
 
+        const mintContract = new ethers.Contract(
+            mintAddress,
+            mintABI,
+            providerMint
+        );
+        const signer = providerMint.getSigner();
+        const mintContractSigner = mintContract.connect(signer);
+
+        let mintcost = await mintContract.mintCost();
+        const totalCost = amount * mintcost;
+        const transaction = { value: totalCost.toString() };
+        await mintContractSigner.mint(amount, transaction);
+        return "Transaction successful."
+    } catch (err) {
+        if (err.message.includes("whitelisted")) {
+            return "you are not whitelisted";
+        }
+        return err.message;
+    }
+}
+
+
+export const whitelistMint = async (providerMint, userAddress, amount) => {
+    if (!userAddress) return "Connect wallet first.";
+    try {
+
         const leaves = whitelist.map(x => keccak256(x))
         const tree = new MerkleTree(leaves, keccak256, { sortPairs: true })
         const leaf = keccak256(userAddress).toString('hex')
@@ -29,7 +55,13 @@ export const mint = async (providerMint, userAddress, amount) => {
         );
         const signer = providerMint.getSigner();
         const mintContractSigner = mintContract.connect(signer);
-        const mintcost = await mintContract.whitelistmintCost();
+
+
+        let mintcost = await mintContract.whitelistmintCost();
+        const checkHrs = BigNumber.from(await mintContract.checkTime()).toNumber();
+        if (checkHrs > 86400) {
+            mintcost = await mintContract.whitelistmintCostAfter24hrs();
+        }
         const totalCost = amount * mintcost;
         const transaction = { value: totalCost.toString() };
         const resp = await mintContractSigner.whitelistMint(amount, proof, transaction);
@@ -77,6 +109,20 @@ export const mintPriceCal = async () => {
     }
 
     const mintcost = await mintContract.whitelistmintCost();
+    return ethers.utils.formatEther(mintcost);
+}
+
+
+export const mintPriceWithoutWhitelist = async () => {
+
+    let provider = new ethers.providers.JsonRpcProvider(rinkebyProviderURL);
+    const mintContract = new ethers.Contract(
+        mintAddress,
+        mintABI,
+        provider
+    );
+
+    const mintcost = await mintContract.mintCost();
     return ethers.utils.formatEther(mintcost);
 }
 
