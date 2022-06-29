@@ -26,46 +26,48 @@ export const addNewNetwork = async (id) => {
     }
   }
 }
+export const providerOptions = {
+  injected: {
+    display: {
+      name: 'Metamask',
+      description: 'Connect with the provider in your Browser',
+    },
+    package: null,
+  },
+  walletconnect: {
+    package: WalletConnectProvider,
+    options: {
+      // bridge: 'https://bridge.walletconnect.org',
+      // infuraId: '14a0951f47e646c1b241aa533e150219',
+      rpc:{
+        3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+        97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
+      }
+    },
+  },
+  walletlink: {
+    package: WalletLink, // Required
+    options: {
+      appName: 'My Awesome App', // Required
+      infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
+      // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
+      rpc:{
+        3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+        97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
+      }
+      // chainId: 1, // Optional. It defaults to 1 if not provided
+      // darkMode: false, // Optional. Use dark theme, defaults to false
+    },
+  },
+}
 
 export const connectToWallet = createAsyncThunk('wallet', async () => {
     console.log("connecting wallet")
   try {
-    const providerOptions = {
-      injected: {
-        display: {
-          name: 'Metamask',
-          description: 'Connect with the provider in your Browser',
-        },
-        package: null,
-      },
-      walletconnect: {
-        package: WalletConnectProvider,
-        options: {
-          // bridge: 'https://bridge.walletconnect.org',
-          // infuraId: '14a0951f47e646c1b241aa533e150219',
-          rpc:{
-            3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-            97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
-          }
-        },
-      },
-      walletlink: {
-        package: WalletLink, // Required
-        options: {
-          appName: 'My Awesome App', // Required
-          infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
-          // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
-          rpc:{
-            3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-            97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
-          }
-          // chainId: 1, // Optional. It defaults to 1 if not provided
-          // darkMode: false, // Optional. Use dark theme, defaults to false
-        },
-      },
-    }
+    
     const web3Modal = new Web3Modal({
       providerOptions,
+      cacheProvider:true
     })
     const instance = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(instance)
@@ -204,15 +206,21 @@ export const swapTOKENS = createAsyncThunk(
   }
 )
 
-export const disconnectWallet = async (web3Modal, provider) => {
+export const disconnectWallet = createAsyncThunk('disconnect/wallet',async(_,thunkAPI) => {
+
+  const web3Modal = thunkAPI.getState().root.web3Modal;
+  const provider = thunkAPI.getState().root.provider;
+
+  if(web3Modal?.providerController?.cachedProvider === "walletconnect"){
+    localStorage.removeItem('walletconnect')
+  }
   if (provider.close) {
     await provider.close()
     await web3Modal.clearCachedProvider()
   }
   await web3Modal.clearCachedProvider()
   window.location.reload()
-}
-
+})
 const initialState = {
   provider: null,
   userAddress: localStorage.getItem("userAddress") ? localStorage.getItem("userAddress") : '',
@@ -224,6 +232,7 @@ const initialState = {
   balanceOfSecondChain: 0,
   transactionHash: '',
   swapLoading: false,
+  trxnHash:''
 }
 
 let swapToast
@@ -252,6 +261,13 @@ const rootSlice = createSlice({
     },
     clearHashValue(state, {payload}) {
       state.transactionHash = ''
+    },
+    setTrxnHash(state,action){
+      const{payload}  = action
+      state.trxnHash = payload
+    },
+    clearTrxnHash(state){
+      state.trxnHash =''
     },
   },
   extraReducers: {
@@ -302,4 +318,6 @@ export const {
   updateFirstChainBalances,
   updateSecondChainBalances,
   clearHashValue,
+  setTrxnHash,
+  clearTrxnHash
 } = rootSlice.actions

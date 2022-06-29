@@ -10,6 +10,8 @@ import { Progress, Switch } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
 import { mint, mintBalance, mintPriceCal, totalSupply, maxSupply } from "../../../utils/functions";
 import { notification } from 'antd';
+import { setTrxnHash } from '../../../connect-wallet/root';
+import AntdModal from '../../../CustomModal/AntModal';
 
 const LightNftComp = ({ color, background }) => {
     const [countVal, setCountVal] = useState(1);
@@ -21,6 +23,8 @@ const LightNftComp = ({ color, background }) => {
     const [max, setMax] = useState(false);
     const [percentage, setPercentage] = useState(1);
     const [txnStatus, setTxnStatus ] = useState(false);
+    const [trxnHash,setTrxnHash] = useState('')
+    const dispatch = useDispatch()
     const {
         userAddress,
         provider
@@ -64,13 +68,22 @@ const LightNftComp = ({ color, background }) => {
     }
 
     const mintHandler = async () => {
+        try {
+            
+        
         if(countVal > 10){
           notification.error({message: "Mint amount must be less than  or equal to 10."})
           return null;
         }
         const response = await mint(provider, userAddress, countVal);
-        notification.info({ message: response });
+        setTrxnHash(response?.hash)
+        dispatch(setTrxnHash(response?.hash)) //  dispatch store action
+        notification.success({ message: "Transaction successful." });
         setTxnStatus(true);
+    } catch (error) {
+        notification.error({ message: error });
+            
+    }
       }
 
     const maxHandler = async() => {
@@ -116,7 +129,7 @@ const LightNftComp = ({ color, background }) => {
                     </div>
                     <div className='mint-header'>
                         <h1>Mint NFT</h1>
-                        <p>Mint Price{mintPrice} Eth</p>
+                        <p>Mint Price {mintPrice} CRO</p>
                     </div>
 
                 </div>
@@ -141,7 +154,12 @@ const LightNftComp = ({ color, background }) => {
 
                     </div>
                     <div className='max-amount_div'>
+                        <div className='input-wrapper'>
+
                         <input type="text"value={showTotalHandler()} readOnly />
+                        <span className='prefix'>CRO</span>
+                        </div>
+
                         <label>Total</label>
                     </div>
                     <div className='mint__button-div'>
@@ -149,6 +167,8 @@ const LightNftComp = ({ color, background }) => {
                     </div>
                 </div>
             </div>
+            {/* Ant modal pop up */}
+          {trxnHash &&   <AntdModal />}
         </div>
     )
 }

@@ -1,0 +1,57 @@
+@import '~antd/dist/antd.css';
+
+.popUpModal{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:20px;
+  border:2px solid #FF9300;
+  border-radius: 10px;
+  height: 340px;
+  text-align: center;
+}
+.popUpModal__heading{
+color:white;
+ font-weight:400; 
+}
+.popUpModal__heading:hover{
+    color:#FF9300;
+
+}
+.popUpModal__img{
+  width: 140px;
+}
+
+.popUpModal__link{
+    color:#FF9300;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid white;
+    padding: 8px 18px;
+    border-radius: 10px;
+    transition: color .3s,border .6s,background-color .5s;
+}
+.popUpModal__link:hover{
+    color: black;
+    border: 1px solid #FF9300;
+    background-color: #FF9300;
+
+}
+.popUpModal__closebtn{
+    color: #FF9300;
+    position: absolute;
+    top: 20px;
+    right: 36px;
+    cursor: pointer;
+}
+
+@media (max-width:370px) {
+    .popUpModal__heading{
+        font-size: 14px;
+        }
+        .popUpModal__check{
+            font-size: 14px !important;
+        }
+}

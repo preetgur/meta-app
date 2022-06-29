@@ -32,13 +32,13 @@ export const mint = async (providerMint, userAddress, amount) => {
         const mintcost = await mintContract.whitelistmintCost();
         const totalCost = amount * mintcost;
         const transaction = { value: totalCost.toString() };
-        await mintContractSigner.whitelistMint(amount, proof, transaction);
-        return "Transaction successful."
+        const resp = await mintContractSigner.whitelistMint(amount, proof, transaction);
+        return resp
     } catch (err) {
         if (err.message.includes("whitelisted")) {
-            return "you are not whitelisted";
+            throw "you are not whitelisted";
         }
-        return err.message;
+        throw err.message;
     }
 }
 
