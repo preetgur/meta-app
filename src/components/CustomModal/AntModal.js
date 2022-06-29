@@ -17,7 +17,7 @@ const AntdModal = ({hash}) => {
     dispatch(clearTrxnHash())
   };
   
-  const link = `https://testnet.cronoscan.com/tx/${hash}`
+  const link = `https://cronoscan.com/tx/${hash}`
 
   return (
     <>
