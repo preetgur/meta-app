@@ -23,7 +23,9 @@ const AntdModal = ({hash}) => {
     <>
       <Modal visible={isModalVisible} className="antModal" footer={null} bodyStyle={{background:"#201F3E"}} >
         <div className="popUpModal"> 
-        <span className='popUpModal__closebtn' onClick={()=>handleClose()}> <CloseCircleOutlined style={{fontSize:"20px"}} /> </span>
+        <div className="hp" > 
+            <div className='hp_close' onClick={handleClose}>x</div>
+        </div>
         <h2 className="popUpModal__heading"> <CheckCircleOutlined className='popUpModal__check' style={{fontSize:"20px"}}/> Transaction Successfull </h2>
          <img className="popUpModal__img" src={Logo} />
            

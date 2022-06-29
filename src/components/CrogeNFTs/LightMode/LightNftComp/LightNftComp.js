@@ -183,7 +183,7 @@ const LightNftComp = ({ color, background }) => {
                 </div>
             </div>
             {/* Ant modal pop up */}
-           <AntdModal hash={transactionHash}/>
+          {transactionHash &&  <AntdModal hash={transactionHash}/>}
         </div>
     )
 }
