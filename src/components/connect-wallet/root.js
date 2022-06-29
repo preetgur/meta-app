@@ -41,20 +41,18 @@ export const providerOptions = {
       // bridge: 'https://bridge.walletconnect.org',
       // infuraId: '14a0951f47e646c1b241aa533e150219',
       rpc:{
-        3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-        97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
+        25: "https://cronosrpc-1.xstaking.sg",
       }
     },
   },
   walletlink: {
     package: WalletLink, // Required
     options: {
-      appName: 'My Awesome App', // Required
-      infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
+      appName: 'Croge NFT', // Required
+      // infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
       // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
       rpc:{
-        3: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-        97: "https://speedy-nodes-nyc.moralis.io/7ef5d24e2c4157673144f3de/bsc/testnet",
+        25: "https://cronosrpc-1.xstaking.sg",
       }
       // chainId: 1, // Optional. It defaults to 1 if not provided
       // darkMode: false, // Optional. Use dark theme, defaults to false
