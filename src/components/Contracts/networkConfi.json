@@ -45,9 +45,9 @@
   },
   "25": {
     "chainId": "0x19",
-    "chainName": "CRO",
+    "chainName": "Cronos",
     "nativeCurrency": {"name": "CRO", "symbol": "CRO", "decimals": 18},
-    "rpcUrls": ["https://cronosrpc-1.xstaking.sg"],
+    "rpcUrls": ["https://evm.cronos.org"],
     "blockExplorerUrls": ["https://cronoscan.com"]
   }
 }

@@ -7,7 +7,6 @@ import whitelist from "./whitelistAddresses.json";
 export const rinkebyProviderURL = "https://evm.cronos.org/";
 
 // provider
-// let provider = new ethers.providers.JsonRpcProvider(rinkebyProviderURL);
 
 export const mint = async (providerMint, userAddress, amount) => {
     
@@ -80,13 +79,12 @@ export const whitelistMint = async (providerMint, userAddress, amount) => {
 
 export const mintBalance = async (providerMint, userAddress) => {
     if (!userAddress) return 0;
+    let provider = new ethers.providers.JsonRpcProvider(rinkebyProviderURL);
     const mintContract = new ethers.Contract(
         mintAddress,
         mintABI,
-        providerMint
+        provider
     );
-    const signer = providerMint.getSigner();
-    const mintContractSigner = mintContract.connect(signer);
     try {
         const balance = parseInt(await mintContract.balanceOf(userAddress));
         console.log("!!! mint balance !!!!",balance)

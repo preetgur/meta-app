@@ -30,22 +30,32 @@ export const addNewNetwork = async (id) => {
 }
 
 export const providerOptions = {
+  walletconnect: {
+    package: WalletConnectProvider,
+    options: {
+        rpc: {
+            25: "https://evm.cronos.org/",
+        },
+        network: 'cronos',
+        chainId: 25
+    },
+    qrcodeModalOptions: {
+        mobileLinks: [
+            "metamask",
+            "trust",
+            "argent",
+            "rainbow",
+            "imtoken",
+            "pillar",
+        ]
+    }
+},
   injected: {
     display: {
       name: 'Metamask',
       description: 'Connect with the provider in your Browser',
     },
     package: null,
-  },
-  walletconnect: {
-    package: WalletConnectProvider,
-    options: {
-      bridge: 'https://bridge.walletconnect.org',
-      infuraId: INFURAID,
-      rpc:{
-        25: "https://evm.cronos.org",
-      }
-    },
   },
   walletlink: {
     package: WalletLink, // Required
@@ -55,9 +65,8 @@ export const providerOptions = {
       // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
       rpc:{
         25: "https://evm.cronos.org",
-      }
-      // chainId: 1, // Optional. It defaults to 1 if not provided
-      // darkMode: false, // Optional. Use dark theme, defaults to false
+      },
+      chainId: 25
     },
   },
 }
