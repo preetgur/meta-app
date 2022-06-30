@@ -85,11 +85,14 @@ export const mintBalance = async (providerMint, userAddress) => {
         mintABI,
         providerMint
     );
+    const signer = providerMint.getSigner();
+    const mintContractSigner = mintContract.connect(signer);
     try {
         const balance = parseInt(await mintContract.balanceOf(userAddress));
+        console.log("!!! mint balance !!!!",balance)
         return balance;
     } catch (error) {
-        console.log(error);
+        console.log("!---- mint balane error ----!",error);
         return 0;
     }
 }

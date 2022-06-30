@@ -9,6 +9,8 @@ import chains from '../Contracts/chains.json'
 import {apiRequest} from '../React_Query/axios_utils'
 import endPoints from '../React_Query/apiEndpoints.json'
 
+const INFURAID = "795fff49a454480d945bde511a2b712c";
+
 export const addNewNetwork = async (id) => {
   try {
     await window.ethereum.request({
@@ -38,8 +40,8 @@ export const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      bridge: 'https://bridge.walletconnect.org',
-      infuraId: '14a0951f47e646c1b241aa533e150219',
+      // bridge: 'https://bridge.walletconnect.org',
+      infuraId: INFURAID,
       rpc:{
         25: "https://cronosrpc-1.xstaking.sg",
       }
@@ -49,7 +51,7 @@ export const providerOptions = {
     package: WalletLink, // Required
     options: {
       appName: 'Croge NFT', // Required
-      infuraId: '14a0951f47e646c1b241aa533e150219', // Required unless you provide a JSON RPC url; see `rpc` below
+      infuraId: INFURAID, // Required unless you provide a JSON RPC url; see `rpc` below
       // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
       rpc:{
         25: "https://cronosrpc-1.xstaking.sg",
