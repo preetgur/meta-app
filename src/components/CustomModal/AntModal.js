@@ -1,5 +1,5 @@
 import { Modal } from 'antd';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import {CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import "./AntdModal.css"
 import PropTypes from 'prop-types'
@@ -27,7 +27,10 @@ const AntdModal = ({hash}) => {
             <div className='hp_close' onClick={handleClose}>x</div>
         </div>
         <h2 className="popUpModal__heading"> <CheckCircleOutlined className='popUpModal__check' style={{fontSize:"20px"}}/> Transaction Successfull </h2>
-         <img className="popUpModal__img" src={Logo} />
+
+        <Suspense fallback={<div className=" skeleton"> </div>}>
+          <img className="popUpModal__img" src={Logo} alt={"croge image"}/>
+       </Suspense>
            
            <p> <a href={link} target="_blank" className='popUpModal__link' >View Transaction Details</a> </p>
         </div>
