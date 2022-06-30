@@ -24,6 +24,7 @@ const LightNftComp = ({ color, background }) => {
     const [percentage, setPercentage] = useState(1);
     const [txnStatus, setTxnStatus ] = useState(false);
     const [transactionHash,setTransactionHash] = useState('')
+    const [isLoading,setIsLoading]= useState(false)
     const dispatch = useDispatch()
     const {
         userAddress,
@@ -89,14 +90,18 @@ const LightNftComp = ({ color, background }) => {
             setTxnStatus(true);
             return;
         }
+        setIsLoading(true)
         const response = await mint(provider, userAddress, countVal);
         console.log("!---- mint ---- response -----!",response)
         setTransactionHash(response?.hash)
         dispatch(setTrxnHash(response?.hash)) //  dispatch store action
         notification.success({ message: "Transaction successful." });
         setTxnStatus(true);
+        setIsLoading(false)
+
     } catch (error) {
         notification.error({ message: error });
+        setIsLoading(false)
             
     }
       }
@@ -178,7 +183,12 @@ const LightNftComp = ({ color, background }) => {
                         <label>Total</label>
                     </div>
                     <div className='mint__button-div'>
-                        <button onClick={() => mintHandler()}>Mint</button>
+                        {isLoading ? 
+                            <button className='loading-div'>
+                                <div className="loading-spinner"> </div>
+                            </button> : 
+                            <button onClick={() => mintHandler()}>Mint</button>
+                        }
                     </div>
                 </div>
             </div>
