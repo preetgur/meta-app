@@ -40,10 +40,10 @@ export const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      // bridge: 'https://bridge.walletconnect.org',
+      bridge: 'https://bridge.walletconnect.org',
       infuraId: INFURAID,
       rpc:{
-        25: "https://cronosrpc-1.xstaking.sg",
+        25: "https://evm.cronos.org",
       }
     },
   },
@@ -54,7 +54,7 @@ export const providerOptions = {
       infuraId: INFURAID, // Required unless you provide a JSON RPC url; see `rpc` below
       // rpc: '', // Optional if `infuraId` is provided; otherwise it's required
       rpc:{
-        25: "https://cronosrpc-1.xstaking.sg",
+        25: "https://evm.cronos.org",
       }
       // chainId: 1, // Optional. It defaults to 1 if not provided
       // darkMode: false, // Optional. Use dark theme, defaults to false
