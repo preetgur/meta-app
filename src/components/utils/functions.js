@@ -4,7 +4,7 @@ import keccak256 from 'keccak256';
 import { mintAddress, mintABI } from "../SC/mint";
 import whitelist from "./whitelistAddresses.json";
 
-export const rinkebyProviderURL = "https://cronosrpc-1.xstaking.sg";
+export const rinkebyProviderURL = "https://evm.cronos.org/";
 
 // provider
 // let provider = new ethers.providers.JsonRpcProvider(rinkebyProviderURL);
