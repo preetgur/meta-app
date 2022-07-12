@@ -1,15 +1,18 @@
 import React, { useRef } from 'react';
 import MetaMask from '../../assests/metamask.png'; 
-import {connectToWallet, disconnectWallet,providerOptions, updateChainId, updateUserAddress} from "../connect-wallet/root";
+import {connectToWallet, disconnectWallet, updateChainId, updateUserAddress} from "../connect-wallet/root";
 import {useDispatch, useSelector} from 'react-redux'
 import {RiShutDownLine} from 'react-icons/ri'
 import Web3Modal from 'web3modal'
 import "./index.css"
+import { providerOptions } from '../connect-wallet/providerOptions';
 
 const web3Modal = new Web3Modal({
   cacheProvider: true, // optional
   providerOptions // required
 });
+
+const walletlocal = JSON.parse(localStorage.getItem('WEB3_CONNECT_CACHED_PROVIDER'))
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,7 +26,8 @@ const Home = () => {
 React.useEffect(()=>{
 
   if (web3Modal?.cachedProvider) {
-    dispatch(connectToWallet());
+    console.log("## local wallet ###",walletlocal)
+    dispatch(connectToWallet(walletlocal));
   }
 },[])
 
@@ -31,7 +35,6 @@ React.useEffect(()=>{
 React.useEffect(() => {
     if (instance?.on) {
 
-        console.log("#### instance ####",instance)
       const handleAccountsChanged = (accounts) => {
         console.log("accountsChanged", accounts);
         if (accounts) dispatch(updateUserAddress(accounts[0])) //  dispatch store action
@@ -47,7 +50,7 @@ React.useEffect(() => {
 
       const handleDisconnect = () => {
         console.log("disconnect");
-        dispatch(disconnectWallet());
+        // dispatch(disconnectWallet());
       };
 
       instance.on("accountsChanged", handleAccountsChanged);
@@ -75,9 +78,12 @@ React.useEffect(() => {
     </div> */}
 
     
-        {!userAddress ? (
-            <button onClick={() => dispatch(connectToWallet())}>Connect Wallet</button>
-          ) : (
+        {!userAddress ? (<div className='buttons__wrapper__section1'>
+
+            {/* <button className='button'  onClick={() => dispatch(connectToWallet('injected'))}>Connect Metamask</button> */}
+            <button className='button' onClick={() => dispatch(connectToWallet('walletlink'))}>Connect Wallet</button>
+
+       </div>   ) : (
             <button onClick={()=>dispatch(disconnectWallet())}>Disconnect</button>
           )}
 

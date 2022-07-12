@@ -1,12 +1,10 @@
 import {createAsyncThunk, createSlice, isRejectedWithValue} from '@reduxjs/toolkit'
-import WalletConnectProvider from '@walletconnect/web3-provider'
 import Web3Modal from 'web3modal'
-import WalletLink from 'walletlink'
 import toast from 'react-hot-toast'
 import {ethers} from 'ethers'
 import networks from '../Contracts/networkConfi.json'
+import {providerOptions}  from './providerOptions';
 
-const INFURAID = "795fff49a454480d945bde511a2b712c";
 
 export const addNewNetwork = async (id) => {
   try {
@@ -26,42 +24,20 @@ export const addNewNetwork = async (id) => {
   }
 }
 
-export const providerOptions = {
-    walletconnect: {
-      package: WalletConnectProvider, // required
-      options: {
-        infuraId: INFURAID // required
-      },
-     qrcodeModalOptions: {
-        mobileLinks: [
-            "metamask",
-            "trust",
-            "argent",
-            "rainbow",
-            "imtoken",
-            "pillar",
-        ]
-    }
-},
-  injected: {
-    display: {
-      name: 'Metamask',
-      description: 'Connect with the provider in your Browser',
-    },
-    package: null,
-  },
- 
-}
-export const connectToWallet = createAsyncThunk('wallet', async () => {
-    console.log("connecting wallet")
+
+
+
+export const connectToWallet = createAsyncThunk('wallet', async (wallet) => {
+    console.log("connecting wallet",wallet)
   try {
     
-
     const web3Modal = new Web3Modal({
       providerOptions,
       cacheProvider:true
     })
     const instance = await web3Modal.connect()
+    
+    // const instance = await web3Modal.connectTo(wallet)
     const provider = new ethers.providers.Web3Provider(instance)
     const signer = provider.getSigner()
     const accounts = await provider.listAccounts()
@@ -93,6 +69,12 @@ export const disconnectWallet = createAsyncThunk('disconnect/wallet',async(_,thu
   if(web3Modal?.providerController?.cachedProvider === "walletconnect"){
     localStorage.removeItem('walletconnect')
   }
+
+  // if(web3Modal?.providerController?.cachedProvider === "walletlink"){
+  //   localStorage.removeItem('WEB3_CONNECT_CACHED_PROVIDER')
+  // }
+  localStorage.removeItem('WEB3_CONNECT_CACHED_PROVIDER')
+
   if (provider.close) {
     await provider.close()
     await web3Modal.clearCachedProvider()
@@ -165,7 +147,7 @@ const rootSlice = createSlice({
       state.userAddress = payload?.userAddress
       state.chainId = payload?.chainId
       state.web3Modal = payload?.web3Modal
-      state.instance = payload.instance
+      state.instance = payload?.instance
 
       toast.success('Wallet Connected')
     },

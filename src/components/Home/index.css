@@ -1,17 +1,22 @@
 .buttons{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 60vh;
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
+    background-color: #d4cdcd;
+    padding: 15px;
+    margin-top: 20vh;
 }
 
 .buttons__wrapper{
     display: flex;
     gap: 10px;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 .button {
@@ -23,8 +28,10 @@
     font-size: 1.2rem;
     font-weight: bold;
     padding: 10px;
-    width: 100%;
-    font-size: 16px;
+ 
+    width: 200px;
+    font-size: 14px;
+    margin: auto;
 }
 .connect__metamask__button{
     border: 1px solid yellow;
@@ -32,4 +39,9 @@
 
 .connect__coinbase__button{
     border: 1px solid blue;
+}
+.buttons__wrapper__section1{
+    display: flex;
+    gap: 20px;
+    width: 100%;
 }
